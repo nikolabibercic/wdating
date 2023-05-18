@@ -21,3 +21,7 @@ CREATE TABLE users(
 	FOREIGN KEY (country_id) REFERENCES sf_country(country_id),
    	FOREIGN KEY (role_id) REFERENCES sf_role(role_id)
 );
+
+
+insert into sf_role values(null,'Admin');
+insert into sf_role values(null,'User');

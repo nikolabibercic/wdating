@@ -1,8 +1,11 @@
 <?php
 
-class User {
+class User extends ConnectionBuilder {
 
-    
+    public function login(){
+            
+    }
+
 }
 
 ?>
