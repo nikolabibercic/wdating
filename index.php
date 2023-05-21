@@ -7,12 +7,30 @@ $title = 'wdating';
 
 <?php 
 
-if(isset($_POST['email']) && isset($_POST['password'])){
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    echo $email;
-    echo $password;
+if($_SERVER['REQUEST_METHOD']=== "POST"){
+
+    $errors = false;
+
+    if(isset($_POST['email']) && !empty($_POST['email'])){
+        $email = $_POST['email'];
+    }else{
+        $emailError = "Email is required";
+        $errors = true;
+    }
+    
+    if(isset($_POST['password']) && !empty($_POST['password'])){
+        $password = $_POST['password'];
+    }else{
+        $passwordError = "Password is required";
+        $errors = true;
+    }
+    
+    if(!$errors){
+        $user->login($email,$password);
+    }    
+
 }
+
 
 ?>
 

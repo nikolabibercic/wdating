@@ -25,3 +25,9 @@ CREATE TABLE users(
 
 insert into sf_role values(null,'Admin');
 insert into sf_role values(null,'User');
+
+-----------------------------------------------------------------------
+insert into sf_country values(null,'Serbia');
+
+insert into users values(null,'nikola@gmail.com','nikola','123',1,'Belgrade',1,'',current_time());
+insert into users values(null,'pera@gmail.com','pera','123',1,'Novi Sad',2,'',current_time());

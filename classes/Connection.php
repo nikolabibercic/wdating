@@ -16,7 +16,7 @@ class Connection {
 
     public function connect(){
         try {
-            $db = new PDO("mysql:host={$this->host};dbname={$this->dbname}",$this->username,'');
+            return new PDO("mysql:host={$this->host};dbname={$this->dbname}",$this->username,$this->password);
         }catch (PDOException $e) {
             echo $e->getMessage();
         }
