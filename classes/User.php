@@ -20,7 +20,7 @@ class User extends ConnectionBuilder {
             $_SESSION['country'] = $user->country;
             $_SESSION['role'] = $user->role;
         }else{
-            header("Location: index.php");
+            $this->returnUser();
         }
     }
 
