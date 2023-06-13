@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<header>
-    <a href="controller/logout.php">Logout</a>
+<header>    
+    <nav class="container">
+        <a href="user_desh.php" id="logo"><span>w</span>dating</a>
+        <div class="meni">
+            <?php if(isset($_SESSION['userId'])): ?>
+                <a href="#"><?php echo $_SESSION['username'] ?></a>
+                <a href="controller/logout.php">Logout</a>
+            <?php endif; ?>
+        </div>        
+    </nav>
 </header>

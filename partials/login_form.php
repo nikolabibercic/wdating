@@ -1,4 +1,4 @@
-<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
+<form class="loginForm container" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
     <?php if(isset($emailError)): ?>
         <p>Email is required!</p>
     <?php endif; ?>
