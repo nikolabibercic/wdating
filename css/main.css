@@ -1,11 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,800;1,100&display=swap');
 
+/*---variables---*/
+:root {
+    --firstColor: #800080;
+    --secondColor: #ffb6c1;
+    --success: #198754;
+    --danger: #dc3545;
+    --warning: #ffc107;
+    --info: #17a2b8;
+    --white: white;
+}
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+}
+
+body {
+    position: relative;
+    height: 100vh;
 }
 
 .container {
@@ -16,7 +31,6 @@
 header {
     padding: 30px 0px;
     text-transform: uppercase;
-    /*background-color: #ffb6c1;*/
 }
 
 header nav {
@@ -28,13 +42,13 @@ header nav {
 
 #logo {
     text-decoration: none;
-    font-size: 19px;
-    color: #ffb6c1;
+    font-size: 30px;
+    color: var(--secondColor);
     font-weight: 800;
 }
 
 #logo span {
-    color: #800080;
+    color: var(--firstColor);
 }
 
 .meni a {
@@ -44,10 +58,43 @@ header nav {
     font-weight: 700;
 }
 
-.loginForm {
+.form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 100px;
+}
+
+.form input {
     width: 50%;
+    height: 40px;
+    margin-bottom: 20px;
+    border: 2px solid var(--secondColor);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.form input:focus {
+    border: 3px solid var(--firstColor);
+}
+
+.form button {
+    width: 50%;
+    height: 40px;
+    background-color: var(--firstColor);
+    color: var(--white);
+    font-weight: 600;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.form a {
+    text-decoration: none;
+    color: var(--info);
+    font-weight: 600;
+}
+
+.form a:hover {
+    color: var(--firstColor);
 }
