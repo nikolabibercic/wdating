@@ -24,6 +24,20 @@ class User extends ConnectionBuilder {
         }
     }
 
+    public function register($email,$username,$password,$genderId,$countryId){
+        if($this->checkEmailExist($email) || $this->checkUsernameExist($username)){
+            $this->returnUser();
+        }else{
+            try{
+                $sql = "insert into users(email,username,password,date_created,role_id,gender_id,country_id) values('{$email}','{$username}','{$password}',current_timestamp(),2,{$genderId},{$countryId})";
+                $query = $this->conn->prepare($sql);
+                $query->execute();
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }
+        }
+    }
+
     public function returnUser(){
         if(!isset($_SESSION['userId'])){
             header("location: index.php");
@@ -35,6 +49,53 @@ class User extends ConnectionBuilder {
             return true;
         }else{
             return false;
+        }
+    }
+
+    public function genderList(){
+        $sql = "select g.gender_id,g.gender 
+                from sf_gender g";
+        $query = $this->conn->prepare($sql);
+        $query->execute();
+        $gender = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $gender;
+    }
+
+    public function countryList(){
+        $sql = "select c.country_id,c.country 
+                from sf_country c
+                order by c.country";
+        $query = $this->conn->prepare($sql);
+        $query->execute();
+        $countries = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $countries;
+    }
+
+    public function checkEmailExist($email){
+        $sql = "select email
+                from users
+                where email = '{$email}'";
+        $query = $this->conn->prepare($sql);
+        $query->execute();
+        $email = $query->fetch(PDO::FETCH_OBJ);
+
+        if($query->rowCount()===1){
+            return true;
+        }
+    }
+
+    public function checkUsernameExist($username){
+        $sql = "select username
+                from users
+                where username = '{$username}'";
+        $query = $this->conn->prepare($sql);
+        $query->execute();
+        $username = $query->fetch(PDO::FETCH_OBJ);
+
+        if($query->rowCount()===1){
+            return true;
         }
     }
 
