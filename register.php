@@ -42,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
     }
 
     if(isset($_POST['country']) && !empty($_POST['country'])){
-        $countryId = filter_input(INPUT_POST,'gender',FILTER_SANITIZE_NUMBER_INT);
+        $countryId = filter_input(INPUT_POST,'country',FILTER_SANITIZE_NUMBER_INT);
     }else{
         $countryError = "Country is required";
         $errors = true;

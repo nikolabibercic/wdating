@@ -29,7 +29,7 @@ class User extends ConnectionBuilder {
             $this->returnUser();
         }else{
             try{
-                $sql = "insert into users(email,username,password,date_created,role_id,gender_id,country_id) values('{$email}','{$username}','{$password}',current_timestamp(),2,{$genderId},{$countryId})";
+                $sql = "insert into users(username,email,password,country_id,city,role_id,gender_id,profile_image,date_created,last_login,status_id) values('{$username}','{$email}','{$password}',{$countryId},null,2,{$genderId},null,current_timestamp(),null,null)";
                 $query = $this->conn->prepare($sql);
                 $query->execute();
             }catch(PDOException $e){
@@ -105,6 +105,18 @@ class User extends ConnectionBuilder {
         if($query->rowCount()===1){
             return true;
         }
+    }
+
+    public function getUsers($search,$country){
+        $sql = "select s.*,c.*
+                from users s
+                inner join sf_country c on c.country_id = s.country_id
+                where s.username like '%{$search}%' and c.country like '%{$country}%' ";
+        $query = $this->conn->prepare($sql);
+        $query->execute();
+        $users = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $users;
     }
 
 }
