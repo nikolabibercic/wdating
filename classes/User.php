@@ -41,6 +41,14 @@ class User extends ConnectionBuilder {
     public function returnUser(){
         if(!isset($_SESSION['userId'])){
             header("location: index.php");
+            die();
+        }
+    }
+
+    public function returnLoggedUser(){
+        if(isset($_SESSION['userId'])){
+            header("location: user_desh.php");
+            die();
         }
     }
 

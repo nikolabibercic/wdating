@@ -3,6 +3,8 @@
 require 'init.php';
 $title = 'wdating';
 
+$user->returnLoggedUser();
+
 ?>
 
 <?php
